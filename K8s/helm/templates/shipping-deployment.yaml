@@ -24,6 +24,7 @@ spec:
         - java
         - -Xmn256m
         - -Xmx768m
+        {{- if .Values.jaeger.enabled }}
         - -javaagent:opentelemetry-javaagent.jar
         - -Dotel.metrics.exporter=none
         - -Dotel.resource.attributes=service.name=shipping
@@ -31,6 +32,7 @@ spec:
         - -Dotel.traces.sampler=traceidratio
         - -Dotel.traces.sampler.arg=0.2
         - -Dotel.exporter.jaeger.endpoint=http://jaeger.monitoring.svc.cluster.local:14250
+        {{- end }}
         - -jar
         - shipping.jar
         name: shipping

@@ -4,6 +4,7 @@ metadata:
   name: mongodb
   labels:
     service: mongodb
+    type: infra
 spec:
   replicas: 1
   selector:
@@ -13,6 +14,7 @@ spec:
     metadata:
       labels:
         service: mongodb
+        type: infra
     spec:
       {{ if .Values.psp.enabled }}
       serviceAccountName: robot-shop

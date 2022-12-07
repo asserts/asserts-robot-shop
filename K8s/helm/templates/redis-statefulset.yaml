@@ -3,6 +3,7 @@ kind: StatefulSet
 metadata:
   labels:
     service: redis
+    type: infra
   name: redis
 spec:
   replicas: 1
@@ -14,6 +15,7 @@ spec:
     metadata:
       labels:
         service: redis
+        type: infra
     spec:
       {{ if .Values.psp.enabled }}
       serviceAccountName: robot-shop

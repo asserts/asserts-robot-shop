@@ -1,17 +1,21 @@
 ---
 apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
+kind: PodMonitor
 metadata:
   name: metrics
   labels:
-    release: {{ .Values.serviceMonitor.releaseLabel }}
+    release: {{ .Values.monitor.releaseLabel }}
     app: robot-shop
 spec:
   selector:
     matchLabels:
       app: robot-shop
+      {{- if .Values.monitor.infraOnly }}
+      type: infra
+      {{- end }}
   namespaceSelector:
-    any: true
-  endpoints:
+    matchNames:
+     - {{ .Release.Namespace }}
+  podMetricsEndpoints:
     - port: http
     - port: http-metrics
