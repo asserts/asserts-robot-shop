@@ -1,6 +1,6 @@
 ---
 apiVersion: monitoring.coreos.com/v1
-kind: PodMonitor
+kind: ServiceMonitor
 metadata:
   name: metrics
   labels:
@@ -16,6 +16,6 @@ spec:
   namespaceSelector:
     matchNames:
      - {{ .Release.Namespace }}
-  podMetricsEndpoints:
+  endpoints:
     - port: http
     - port: http-metrics

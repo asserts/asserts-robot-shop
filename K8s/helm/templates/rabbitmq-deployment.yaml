@@ -4,7 +4,6 @@ metadata:
   name: rabbitmq
   labels:
     service: rabbitmq
-    type: infra
 spec:
   replicas: 1
   selector:
@@ -14,7 +13,6 @@ spec:
     metadata:
       labels:
         service: rabbitmq
-        type: infra
     spec:
       {{ if .Values.psp.enabled }}
       serviceAccountName: robot-shop
