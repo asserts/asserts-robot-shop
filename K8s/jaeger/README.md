@@ -1,9 +1,9 @@
 # Jaeger Tracing
 
-For the Jaeger Tracing backend deploy the files in this directory to your cluster.
+For the Jaeger Tracing backend deploy the file in this directory to your cluster.
 
 ```sh
-$ kubectl apply -f .
+$ kubectl apply -f jaeger.yaml
 ```
 
 All components will be installed in the `monitoring` namespace.
