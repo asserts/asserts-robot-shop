@@ -27,7 +27,8 @@ public class BuildInfo {
     @Scheduled(fixedDelay = 10000)
     public void run() {
         LocalDateTime now = LocalDateTime.now();
-        if (now.getHour() == 10 && now.getMinute() < 15) {
+        // Simulate a bad shipping build deployment at 5:00 AM UTC and revert it by 5:15 AM UTC
+        if (now.getHour() == 5 && now.getMinute() < 15) {
             if (buildInfoGauge != null && GOOD_BUILD_VERSION.equals(buildInfoGauge.getId().getTag(TAG_VERSION))) {
                 meterRegistry.remove(buildInfoGauge);
             }

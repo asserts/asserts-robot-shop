@@ -70,8 +70,8 @@ BAD_BUILD_INFO = ['HEAD', '728b09facd4dfaf88e6346f72b60a430dc4b9260', '1.0.1']
 @scheduler.task('interval', minutes=1)
 def update_error_flag():
     global error_flag
-    # Simulate payment errors between 2:00 and 2:30 PM
-    error_flag = datetime.now().hour == 14 and datetime.now().minute < 30
+    # Simulate a bad payment build deployment at 6:00 AM UTC and revert it by 6:30 AM UTC
+    error_flag = datetime.now().hour == 6 and datetime.now().minute < 30
 
     if error_flag:
         if build_info.labels(*GOOD_BUILD_INFO):
