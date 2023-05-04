@@ -16,6 +16,13 @@ spec:
                 name: jaeger
                 port:
                   number: 16686
+          - path: /v1/*
+            pathType: Prefix
+            backend:
+              service:
+                name: jaeger
+                port:
+                  number: 4318
   tls:
     - hosts:
         - jaeger.dev.asserts.ai
