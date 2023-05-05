@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: robot-shop-jaeger-ingress
   namespace: monitoring
-    nginx:
+  annotations:
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   ingressClassName: nginx
