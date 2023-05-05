@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jaeger
-  namespace: monitoring
+  namespace: robot-shop
   labels:
     service: jaeger
 spec:
@@ -29,7 +29,7 @@ spec:
             - name: SPAN_STORAGE_TYPE
               value: "elasticsearch"
             - name: ES_SERVER_URLS
-              value: "http://es-jaeger:9200"
+              value: "http://es-jaeger.monitoring.svc:9200"
             - name: COLLECTOR_OTLP_ENABLED
               value: "true"
           ports:
