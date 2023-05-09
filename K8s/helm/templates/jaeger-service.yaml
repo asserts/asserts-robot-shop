@@ -6,7 +6,7 @@ metadata:
     service: jaeger
     app: robot-shop
   name: jaeger
-  namespace: robot-shop
+  namespace: monitoring
 spec:
   ports:
     - name: otlp

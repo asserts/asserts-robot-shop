@@ -16,7 +16,7 @@ data:
         namespace: default
         endpoint: 0.0.0.0:8889
       otlp:
-        endpoint: http://jaeger.robot-shop.svc.cluster.local:4317
+        endpoint: http://jaeger.monitoring.svc.cluster.local:4317
         tls:
           insecure: true
 
