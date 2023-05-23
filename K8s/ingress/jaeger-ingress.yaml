@@ -5,6 +5,7 @@ metadata:
   namespace: monitoring
   annotations:
     nginx.ingress.kubernetes.io/use-regex: "true"
+#    nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
 spec:
   ingressClassName: nginx
   rules:
