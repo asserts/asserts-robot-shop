@@ -26,6 +26,8 @@ spec:
           envFrom:
           - secretRef:
               name: grafana-dev-tempo
+          - secretRef:
+              name: asserts-password-otel
           image: {{ .Values.image.repo }}/otel-collector:{{ .Values.image.otelcollectorVersion }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
