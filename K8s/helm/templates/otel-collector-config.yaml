@@ -19,13 +19,17 @@ data:
         endpoint: http://jaeger.monitoring.svc.cluster.local:4317
         tls:
           insecure: true
+      otlp/tempo:
+        endpoint: tempo-dev-01-dev-us-central-0.grafana.net:443
+        headers:
+          authorization: Basic ${env:TEMPO_TOKEN}
 
     processors:
       assertsprocessor:
         asserts_server:
           endpoint: {{ .Values.otelcollector.assertsServer }}
           user: {{ .Values.otelcollector.assertsUser }}
-          password: {{ .Values.otelcollector.assertsPassword }}
+          password: ${env:ASSERTS_PASSWORD}
         asserts_env: {{ .Values.otelcollector.assertsEnv }}
         asserts_site: {{ .Values.otelcollector.assertsSite }}
         trace_rate_limit_per_service_per_request: {{ .Values.otelcollector.tracesPerRequest }}
@@ -92,7 +96,7 @@ data:
         traces:
           receivers: [otlp]
           processors: [groupbytrace, assertsprocessor]
-          exporters: [otlp]
+          exporters: [otlp, otlp/tempo]
         metrics:
           receivers: [otlp]
           exporters: [prometheus]
