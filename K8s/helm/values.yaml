@@ -21,7 +21,7 @@ payment:
   gateway: null
   #gateway: https://www.paypal.com
   #gateway: https://www.worldpay.com
-  failureHour: 14
+  failureHour: 20
   failureFromMinute: 30
   failureTillMinute: 60
 
