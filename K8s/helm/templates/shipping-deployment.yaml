@@ -46,7 +46,7 @@ spec:
             value: {{ .Values.shipping.failureTillMinute | quote }}
           {{- end }}
           - name: OTEL_RESOURCE_ATTRIBUTES
-            value: "service.name=shipping,service.namespace=robot-shop"
+            value: "service.name=shipping,service.namespace=robot-shop,deployment.environment=prod"
         ports:
         - name: http
           containerPort: 8080

@@ -65,7 +65,7 @@ services:
       - robot-shop
     environment:
       OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: http://otelcollector:4317
-      OTEL_RESOURCE_ATTRIBUTES: "service.name=cart,service.namespace=robot-shop"
+      OTEL_RESOURCE_ATTRIBUTES: "service.name=cart,service.namespace=robot-shop,deployment.environment=prod"
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/health" ]
       interval: 10s
@@ -112,7 +112,7 @@ services:
       timeout: 10s
       retries: 3
     environment:
-      OTEL_RESOURCE_ATTRIBUTES: "service.name=shipping,service.namespace=robot-shop"
+      OTEL_RESOURCE_ATTRIBUTES: "service.name=shipping,service.namespace=robot-shop,deployment.environment=prod"
     logging:
       <<: *logging
   ratings:
@@ -149,7 +149,7 @@ services:
     # Uncomment to change payment gateway
     environment:
       OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: http://otelcollector:4317
-      OTEL_RESOURCE_ATTRIBUTES: "service.name=payment,service.namespace=robot-shop"
+      OTEL_RESOURCE_ATTRIBUTES: "service.name=payment,service.namespace=robot-shop,deployment.environment=prod"
       OTEL_METRICS_EXPORTER: "none"
       #PAYMENT_GATEWAY: "https://www.worldpay.com"
     logging:
