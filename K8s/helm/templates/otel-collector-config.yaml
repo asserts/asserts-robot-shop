@@ -23,6 +23,10 @@ data:
         endpoint: tempo-dev-01-dev-us-central-0.grafana.net:443
         headers:
           authorization: Basic ${env:TEMPO_TOKEN}
+      otlp/temposedemo:
+        endpoint: tempo-us-central1.grafana.net:443
+        headers:
+          authorization: Basic ${env:TEMPO_SEDEMO_TOKEN}
 
     processors:
       assertsprocessor:
@@ -96,7 +100,7 @@ data:
         traces:
           receivers: [otlp]
           processors: [groupbytrace, assertsprocessor]
-          exporters: [otlp, otlp/tempo]
+          exporters: [otlp, otlp/tempo, otlp/temposedemo]
         metrics:
           receivers: [otlp]
           exporters: [prometheus]
